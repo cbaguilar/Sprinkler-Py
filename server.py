@@ -45,7 +45,7 @@ def str2bool(v):
   return v.lower() in ("true")
 
 
-def newsprink(sprinkler)
+def newsprink(sprinkler):
 	if sprinkler == 1:
         gp.setup(3,0)
     elif sprinkler == 2:
