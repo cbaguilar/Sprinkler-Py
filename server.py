@@ -219,8 +219,10 @@ def sprinkler_thread():
 	       		Oprogram = json.loads(lfile.read())
 	       		cs = x+1
                 	wait = int(Oprogram["times"][x])
+                	print(wait)
                         print("Started Sprinkler "+str(cs)+" for "+str(wait))
-                        newsprink(x)
+                        newsprink(cs)
+                
                         time.sleep(float(wait*60))
                         gp.cleanup()
                         
