@@ -11,7 +11,7 @@ import RPi.GPIO as gp
 print("changed from github")
 
 now = datetime.datetime.now()
-
+today = datetime.datetime.today()
 HOST = None               # Symbolic name meaning all available interfaces
 PORT = 42001#input("Enter Port")              # Arbitrary non-privileged port
 s = None
@@ -213,8 +213,11 @@ def sprinkler_thread():
      	lfile = open("program","r")
      	Oprogram = json.loads(lfile.read())
         now = datetime.datetime.now()
+        today = datetime.datetime.today()
+        day = today.weekday
         lfile.close()
-        if int(Oprogram["start"]) == now.hour:
+        if str2bool(Oprogram["days"][day]):
+         if int(Oprogram["start"]) == now.hour:
                 
         	print("Started Program")
         	for x in range (0,12):
