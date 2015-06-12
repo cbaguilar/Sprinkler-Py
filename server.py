@@ -46,7 +46,7 @@ def str2bool(v):
 
 
 def newsprink(sprinkler):
-	if sprinkler == 1:
+    if sprinkler == 1:
         gp.setup(3,0)
     elif sprinkler == 2:
         gp.setup(5,0)
