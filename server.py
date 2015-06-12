@@ -230,7 +230,7 @@ def sprinkler_thread():
                         gp.cleanup()
                 
                 oldnow = time.now()
-        	while oldnow == int(Oprogram["start"])
+        	while oldnow == int(Oprogram["start"]):
                 	print("Finished program, waiting for hour to end")
                 	sleep(10)
                 	lfile = open("program","r")
