@@ -223,9 +223,10 @@ def sprinkler_thread():
                         newsprink(x)
                         time.sleep(float(wait*60))
                         gp.cleanup()
+                        
+                print("Finished program, waiting for hour to end")
         else:
         	print("Not time yet, time set to ",Oprogram["start"])
-        print("Finished program, waiting for hour to end")
         time.sleep(10)
 
 
