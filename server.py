@@ -217,7 +217,7 @@ def sprinkler_thread():
         day = today.weekday()
         print(day)
         lfile.close()
-        if str2bool(Oprogram["days"][int(day)]):
+        if Oprogram["days"][int(day)]:
          if int(Oprogram["start"]) == now.hour:
                 
         	print("Started Program")
