@@ -49,27 +49,27 @@ def newsprink(sprinkler):
     if sprinkler == 1:
         gp.setup(3,gp.OUT)
     elif sprinkler == 2:
-        gp.setup(5,0)
+        gp.setup(5,gp.OUT)
     elif sprinkler == 3:
-        gp.setup(7,0)
+        gp.setup(7,gp.OUT)
     elif sprinkler == 4:
-        gp.setup(11,0)
+        gp.setup(11,gp.OUT)
     elif sprinkler == 5:
-        gp.setup(13,0)
+        gp.setup(13,gp.OUT)
     elif sprinkler == 6:
-        gp.setup(15,0)
+        gp.setup(15,gp.OUT)
     elif sprinkler == 7:
-        gp.setup(19,0)
+        gp.setup(19,gp.OUT)
     elif sprinkler == 8:
-        gp.setup(21,0)
+        gp.setup(21,gp.OUT)
     elif sprinkler == 9:
-        gp.setup(23,0)
+        gp.setup(23,gp.OUT)
     elif sprinkler == 10:
-        gp.setup(22,0)
+        gp.setup(22,gp.OUT)
     elif sprinkler == 11:
-        gp.setup(24,0)
+        gp.setup(24,gp.OUT)
     elif sprinkler == 12:
-        gp.setup(26,0)
+        gp.setup(26,gp.OUT)
 def sprinkler(sprinkler, on):
     
     #numbering sprinklers by column
