@@ -214,7 +214,7 @@ def sprinkler_thread():
      	Oprogram = json.loads(lfile.read())
         now = datetime.datetime.now()
         today = datetime.datetime.today()
-        day = today.weekday
+        day = today.weekday()
         print(day)
         lfile.close()
         if str2bool(Oprogram["days"][int(day)]):
