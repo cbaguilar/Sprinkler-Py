@@ -6,7 +6,7 @@ import sys
 import threading
 import json
 import datetime
-import Rpi.GPIO as gp
+import RPi.GPIO as gp
 
 print("changed from github")
 
