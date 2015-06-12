@@ -47,7 +47,7 @@ def str2bool(v):
 
 def newsprink(sprinkler):
     if sprinkler == 1:
-        gp.setup(3,0)
+        gp.setup(3,gp.OUT)
     elif sprinkler == 2:
         gp.setup(5,0)
     elif sprinkler == 3:
@@ -218,7 +218,7 @@ def sprinkler_thread():
 	                lfile = open("program","r")
 	       		Oprogram = json.loads(lfile.read())
 	       		cs = x+1
-                	wait = Oprogram["times"][x]
+                	wait = int(Oprogram["times"][x])
                         print("Started Sprinkler "+str(cs)+" for "+str(wait))
                         newsprink(x)
                         time.sleep(float(wait*60))
