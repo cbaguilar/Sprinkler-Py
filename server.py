@@ -45,14 +45,38 @@ def str2bool(v):
   return v.lower() in ("true")
 
 
-#def newsprink(sprinkler
+def newsprink(sprinkler)
+	if sprinkler == 1:
+        gp.setup(3,0)
+    elif sprinkler == 2:
+        gp.setup(5,0)
+    elif sprinkler == 3:
+        gp.setup(7,0)
+    elif sprinkler == 4:
+        gp.setup(11,0)
+    elif sprinkler == 5:
+        gp.setup(13,0)
+    elif sprinkler == 6:
+        gp.setup(15,0)
+    elif sprinkler == 7:
+        gp.setup(19,0)
+    elif sprinkler == 8:
+        gp.setup(21,0)
+    elif sprinkler == 9:
+        gp.setup(23,0)
+    elif sprinkler == 10:
+        gp.setup(22,0)
+    elif sprinkler == 11:
+        gp.setup(24,0)
+    elif sprinkler == 12:
+        gp.setup(26,0)
 def sprinkler(sprinkler, on):
     
     #numbering sprinklers by column
     if sprinkler == 1:
-        gp.setup(3,out)
+        gp.output(3,on)
     elif sprinkler == 2:
-        gp.setup(5,on)
+        gp.output(5,on)
     elif sprinkler == 3:
         gp.output(7,on)
     elif sprinkler == 4:
@@ -184,12 +208,20 @@ def server_thread():
 
 def sprinkler_thread():
      while 1:
-     ## if
-	print("Started Program")
-	for x in range (0,12):
-		cs = x+1
-                print("Started Sprinkler"+str(cs))
-                time.sleep(float(Oprogram["times"][x]))
+     if
+        now = datetime.datetime.now()
+        if int(Oprogram["start"]) == now.hour:
+                
+        	print("Started Program")
+        	for x in range (0,12):
+	                lfile = open("program","r")
+	       		Oprogram = json.loads(lfile.read())
+	       		cs = x+1
+                	wait = Oprogram["times"][x]
+                        print("Started Sprinkler "+str(cs)+" for "+str(wait))
+                        newsprink(x)
+                        time.sleep(float(wait*60))
+                        gp.cleanup()
 
 
 try:
@@ -208,5 +240,13 @@ except Exception, e:
     print str(e)
     ##file.close()        
 while 1:
-    pass
+	in = raw_input("--> ")
+	if in == "stop":
+		gp.cleanup()
+		try:
+			conn.close()
+		except:
+			print("teehee")
+		sys.exit()
+    	pass
 
