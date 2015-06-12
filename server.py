@@ -8,6 +8,8 @@ import json
 import datetime
 #import Rpi.GPIO as gp
 
+print("changed from github")
+
 now = datetime.datetime.now()
 
 HOST = None               # Symbolic name meaning all available interfaces
@@ -43,7 +45,7 @@ def str2bool(v):
   return v.lower() in ("true")
 
 
-def newsprink(sprinkler
+#def newsprink(sprinkler
 def sprinkler(sprinkler, on):
     
     #numbering sprinklers by column
