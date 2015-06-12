@@ -207,7 +207,7 @@ def server_thread():
 
 
 def sprinkler_thread():
-     gp.setmode(10)
+     gp.setmode(gp.BOARD)
      while 1:
      	lfile = open("program","r")
      	Oprogram = json.loads(lfile.read())
@@ -224,8 +224,9 @@ def sprinkler_thread():
                 	wait = int(Oprogram["times"][x])
                 	print(wait)
                         print("Started Sprinkler "+str(cs)+" for "+str(wait))
-                        newsprink(cs)
-                
+                        if iwait !=  0:
+                        	newsprink(cs)
+                	
                         time.sleep(float(wait*60))
                         gp.cleanup()
                 
