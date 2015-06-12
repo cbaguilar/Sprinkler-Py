@@ -244,8 +244,8 @@ except Exception, e:
     print str(e)
     ##file.close()        
 while 1:
-	in = raw_input("--> ")
-	if in == "stop":
+	ipt = raw_input("--> ")
+	if ipt == "stop":
 		gp.cleanup()
 		try:
 			conn.close()
