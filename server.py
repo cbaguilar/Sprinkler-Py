@@ -226,6 +226,7 @@ def sprinkler_thread():
         else:
         	print("Not time yet, time set to ",Oprogram["start"])
         print("Finished program, waiting for hour to end")
+        time.sleep(10)
 
 
 try:
