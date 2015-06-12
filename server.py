@@ -42,8 +42,42 @@ rename x name rename(x,name)    renames sprinkler x to name
 def str2bool(v):
   return v.lower() in ("true")
 
+
+def newsprink(sprinkler
 def sprinkler(sprinkler, on):
-    '''
+    
+    #numbering sprinklers by column
+    if sprinkler == 1:
+        gp.setup(3,out)
+    elif sprinkler == 2:
+        gp.setup(5,on)
+    elif sprinkler == 3:
+        gp.output(7,on)
+    elif sprinkler == 4:
+        gp.output(11,on)
+    elif sprinkler == 5:
+        gp.output(13,on)
+    elif sprinkler == 6:
+        gp.output(15,on)
+    elif sprinkler == 7:
+        gp.output(19,on)
+    elif sprinkler == 8:
+        gp.output(21,on)
+    elif sprinkler == 9:
+        gp.output(23,on)
+    elif sprinkler == 10:
+        gp.output(8,on)
+    elif sprinkler == 11:
+        gp.output(10,on)
+    elif sprinkler == 12:
+        gp.output(12,on)
+
+    print("Set sprinkler "+sprinkler+" to "+on)
+    #conn.send("Set sprinkler "+sprinkler+" to "+on"\n)	
+
+
+def sprinkler(sprinkler, on):
+    
     #numbering sprinklers by column
     if sprinkler == 1:
         gp.output(3,on)
@@ -94,7 +128,7 @@ def initialize():
     gp.setup(10,gp.OUT)
     gp.setup(12,gp.OUT)
     print "Set up pins"
-    '''
+    
 
     
 def server_thread():
