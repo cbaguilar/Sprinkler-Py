@@ -224,7 +224,7 @@ def sprinkler_thread():
                 	wait = int(Oprogram["times"][x])
                 	print(wait)
                         print("Started Sprinkler "+str(cs)+" for "+str(wait))
-                        if iwait !=  0:
+                        if wait !=  0:
                         	newsprink(cs)
                 	
                         time.sleep(float(wait*60))
