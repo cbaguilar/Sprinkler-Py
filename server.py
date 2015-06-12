@@ -46,6 +46,7 @@ def str2bool(v):
 
 
 def newsprink(sprinkler):
+    gp.setmode(gp.BOARD)
     if sprinkler == 1:
         gp.setup(3,gp.OUT)
     elif sprinkler == 2:
