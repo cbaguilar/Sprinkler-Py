@@ -234,7 +234,7 @@ def sprinkler_thread():
                         time.sleep(float(wait*60))
                         gp.cleanup()
                 
-                oldnow = time.now()
+                oldnow = now.hour
         	while oldnow == int(Oprogram["start"]):
                 	print("Finished program, waiting for hour to end")
                 	sleep(10)
