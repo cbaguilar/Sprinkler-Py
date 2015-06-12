@@ -166,7 +166,7 @@ def server_thread():
         try:
             s = socket.socket(af, socktype, proto)
         except socket.error as msg:
-            s = NoneW
+            s = None
             continue
         try:
             s.bind(sa)
