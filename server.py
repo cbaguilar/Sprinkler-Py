@@ -208,7 +208,8 @@ def server_thread():
 
 def sprinkler_thread():
      while 1:
-     if
+     	lfile = open("program","r")
+     	Oprogram = json.loads(lfile.read())
         now = datetime.datetime.now()
         if int(Oprogram["start"]) == now.hour:
                 
@@ -222,6 +223,9 @@ def sprinkler_thread():
                         newsprink(x)
                         time.sleep(float(wait*60))
                         gp.cleanup()
+        else:
+        	print("Not time yet, time set to ",Oprogram["start"])
+        print("Finished program, waiting for hour to end")
 
 
 try:
