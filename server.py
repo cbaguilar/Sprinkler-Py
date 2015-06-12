@@ -207,6 +207,7 @@ def server_thread():
 
 
 def sprinkler_thread():
+     gp.setmode(10)
      while 1:
      	lfile = open("program","r")
      	Oprogram = json.loads(lfile.read())
