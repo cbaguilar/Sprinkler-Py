@@ -13,7 +13,7 @@ print("changed from github")
 now = datetime.datetime.now()
 
 HOST = None               # Symbolic name meaning all available interfaces
-PORT = input("Enter Port")              # Arbitrary non-privileged port
+PORT = 42001#input("Enter Port")              # Arbitrary non-privileged port
 s = None
 
 
