@@ -191,6 +191,7 @@ def server_thread():
     while 1:
   	  conn, addr = s.accept()
  	  print 'Connected by', addr
+ 	  broad('Connected by'+str(addr))
 	  conn.send(program+'\n')
 	  while 1:
 	         data = conn.recv(4096)
