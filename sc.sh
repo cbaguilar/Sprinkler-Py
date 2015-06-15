@@ -1,2 +1,5 @@
 #!/bin/bash
-screen -s ./start.sh
+cd /
+cd home/pi/USB/safe/Sprinkler-Py/
+sudo screen -s ./start.sh
+cd /

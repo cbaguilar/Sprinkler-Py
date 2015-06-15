@@ -191,7 +191,7 @@ def server_thread():
     while 1:
   	  conn, addr = s.accept()
  	  print 'Connected by', addr
- 	  broad('Connected by')
+ 	  #broad('Connected by')
 	  conn.send(program+'\n')
 	  while 1:
 	         data = conn.recv(4096)
@@ -226,7 +226,7 @@ def sprinkler_thread():
         lfile.close()
         if Oprogram["days"][int(day)]:
          if int(Oprogram["start"]) == now.hour:
-                broad("started program")
+                #broad("started program")
         	print("Started Program")
         	for x in range (0,12):
         		
@@ -242,7 +242,7 @@ def sprinkler_thread():
                 	
                         time.sleep(float(wait*60))
                         gp.cleanup()
-                broad("finished program")
+                #broad("finished program")
                 now = datetime.datetime.now()
                 oldnow = now.hour
         	while now.hour == int(Oprogram["start"]):
@@ -275,6 +275,7 @@ except Exception, e:
     print str(e)
     ##file.close()        
 while 1:
+   
 	ipt = raw_input("--> ")
 	if ipt == "stop":
 		gp.cleanup()
@@ -284,4 +285,6 @@ while 1:
 			print("teehee")
 		sys.exit()
     	pass
+
+   
 
