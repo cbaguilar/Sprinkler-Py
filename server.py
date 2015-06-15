@@ -234,14 +234,15 @@ def sprinkler_thread():
                 	
                         time.sleep(float(wait*60))
                         gp.cleanup()
-                
+                now = datetime.datetime.now()
                 oldnow = now.hour
-        	while oldnow == int(Oprogram["start"]):
+        	while now.hour == int(Oprogram["start"]):
                 	print("Finished program, waiting for hour to end")
                 	sleep(10)
                 	lfile = open("program","r")
                 	Oprogram = json.loads(lfile.read())
                 	lfile.close()
+                	now = datetime.datetime.now()
                 
         else:
         	
