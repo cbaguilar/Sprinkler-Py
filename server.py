@@ -7,6 +7,12 @@ import threading
 import json
 import datetime
 import RPi.GPIO as gp
+import os
+
+
+def broad(m):
+	os.system("sudo wall -n "+m)
+	
 
 print("changed from github")
 
@@ -219,9 +225,10 @@ def sprinkler_thread():
         lfile.close()
         if Oprogram["days"][int(day)]:
          if int(Oprogram["start"]) == now.hour:
-                
+                broad("started program")
         	print("Started Program")
         	for x in range (0,12):
+        		
 	                lfile = open("program","r")
 	       		Oprogram = json.loads(lfile.read())
 	       		lfile.close()
@@ -234,6 +241,7 @@ def sprinkler_thread():
                 	
                         time.sleep(float(wait*60))
                         gp.cleanup()
+                broad("finished program")
                 now = datetime.datetime.now()
                 oldnow = now.hour
         	while now.hour == int(Oprogram["start"]):
