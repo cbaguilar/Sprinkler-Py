@@ -257,6 +257,7 @@ def sprinkler_thread():
         	
         	print("Not time yet, time set to ",Oprogram["start"])
         time.sleep(10)
+        os.system("ping -c 1")
 
 
 try:
