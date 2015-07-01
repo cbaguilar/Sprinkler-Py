@@ -247,7 +247,7 @@ def sprinkler_thread():
                 oldnow = now.hour
         	while now.hour == int(Oprogram["start"]):
                 	print("Finished program, waiting for hour to end")
-                	sleep(10)
+                	time.sleep(10)
                 	lfile = open("program","r")
                 	Oprogram = json.loads(lfile.read())
                 	lfile.close()
