@@ -261,6 +261,7 @@ def sprinkler_thread():
         g = g+1
         if g > 3:
         	os.system("ping 192.168.2.1 -c 1")
+        	g=0
 
 
 try:
