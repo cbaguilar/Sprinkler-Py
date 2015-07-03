@@ -215,6 +215,7 @@ def server_thread():
 
 
 def sprinkler_thread():
+     g = 0
      gp.setmode(gp.BOARD)
      while 1:
      	lfile = open("program","r")
@@ -257,7 +258,9 @@ def sprinkler_thread():
         	
         	print("Not time yet, time set to ",Oprogram["start"])
         time.sleep(10)
-        os.system("ping 192.168.2.1 -c 1")
+        g = g+1
+        if g > 3:
+        	os.system("ping 192.168.2.1 -c 1")
 
 
 try:
