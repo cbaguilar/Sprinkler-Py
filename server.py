@@ -211,6 +211,13 @@ def server_thread():
 				print(Oprogram["program"]["times"][1])
 				file.close()
 				Oprogram = Oprogram["program"]
+			if Oprogram["type"] == "direct":
+				o = Oprogram["direct"]["sprinkler"]
+				if Oprogram["direct"]["enabled"]:
+					newsprink(int(o+1))
+				else:
+					gp.cleanup()
+				
 		 except Exception, e1:
 			print str(e1)
        	   	 if not data: break
