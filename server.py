@@ -194,7 +194,11 @@ def server_thread():
  	  #broad('Connected by')
 	  conn.send(program+'\n')
 	  while 1:
-	         data = conn.recv(4096)
+	  	 try:
+	         	data = conn.recv(4096)
+	         except socket.except, e3:
+	         	print str(e3)
+	         	break
        		 print(data)
        		 conn.send(data+"\n")
 		 try:	
