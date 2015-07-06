@@ -196,7 +196,7 @@ def server_thread():
 	  while 1:
 	  	 try:
 	         	data = conn.recv(4096)
-	         except socket.except, e3:
+	         except socket.error, e3:
 	         	print str(e3)
 	         	break
        		 print(data)
