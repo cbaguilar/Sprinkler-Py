@@ -200,8 +200,9 @@ def server_thread():
 	         	print str(e3)
 	         	break
        		 print(data)
-       		 conn.send(data+"\n")
-		 try:	
+		 try:
+       			conn.send(data+"\n")
+		 	
 		
 	         	print("wrote new file file")
 			Oprogram = json.loads(data)
