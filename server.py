@@ -9,17 +9,19 @@ import datetime
 import RPi.GPIO as gp
 import os
 
-
+#function for sending a system wide message (like shutting off from button)
 def broad(m):
 	os.system("sudo wall -n "+m)
 	
+print("Epic sprinkler program, made in 2015 by Christian A./Mr. Frog")
+print("Currently in development, code for server and client are available on github.com")
 
 print("changed from github")
 
 now = datetime.datetime.now()
 today = datetime.datetime.today()
-HOST = None               # Symbolic name meaning all available interfaces
-PORT = 42001#input("Enter Port")              # Arbitrary non-privileged port
+HOST = None               # Symbolic name meaning all available interfaces (this comment was in a socket example and i feel it is very importatn)
+PORT = 42001#input("Enter Port")              # Arbitrary non-privileged port (")
 s = None
 
 
@@ -42,15 +44,21 @@ force-on x   force_ctrl(x,T/F)  direct control sprinkler x on/off
 rename x name rename(x,name)    renames sprinkler x to name
 
 '''
+'''
+update, those stuff above are before i discovered the beauty of JSON. Ignore, unless you like
+random historical stuff
+'''
 
 
 
-
-
+#string to boolean for converting diffirent types of True and true
 def str2bool(v):
   return v.lower() in ("true")
 
-
+#OFFICIAL sprinkler function being used, uses a little electrical imbalance bug thingy.
+#With current levels and voltage being as is, current setup of GPIO turns on relay.
+#This little quirk is exploited (since i dont wanna mess with transistor now)
+#and simply used. Only downside is that sprinklers cannot be turned off individually (not a serious issue).
 def newsprink(sprinkler):
     gp.setmode(gp.BOARD)
     if sprinkler == 1:
@@ -108,7 +116,7 @@ def sprinkler(sprinkler, on):
     print("Set sprinkler "+sprinkler+" to "+on)
     #conn.send("Set sprinkler "+sprinkler+" to "+on"\n)	
 
-
+#did i duplicate this?
 def sprinkler(sprinkler, on):
     
     #numbering sprinklers by column
@@ -140,9 +148,7 @@ def sprinkler(sprinkler, on):
     print("Set sprinkler "+sprinkler+" to "+on)
     #conn.send("Set sprinkler "+sprinkler+" to "+on"\n)
     
-    
-    
-
+    # initialize program, set up board and electrical stuff
     
 def initialize():
     print "Initializing"
@@ -163,7 +169,7 @@ def initialize():
     print "Set up pins"
     
 
-    
+    #main server thread that listens for program updates and direct command
 def server_thread():
 
     for res in socket.getaddrinfo(HOST, PORT, socket.AF_UNSPEC,
@@ -226,12 +232,14 @@ def server_thread():
     conn.close()
 
 
-def sprinkler_thread():
+#sprinkler thread that will check to start sprinkler program
+def sprinkler_thread(num):
      g = 0
      gp.setmode(gp.BOARD)
      while 1:
      	lfile = open("program","r")
      	Oprogram = json.loads(lfile.read())
+     	# Iprogram = Oprogram[num] #get the right number program, out of an array of 0 1 and 2
         now = datetime.datetime.now()
         today = datetime.datetime.today()
         day = today.weekday()
@@ -279,7 +287,9 @@ def sprinkler_thread():
 try:
 	
    	serv = threading.Thread(target=server_thread)
-	sprink = threading.Thread(target=sprinkler_thread)
+	sprink = threading.Thread(target=sprinkler_thread, args = (0,))
+	sprink = threading.Thread(target=sprinkler_thread, args = (1,))
+	sprink = threading.Thread(target=sprinkler_thread, args = (2,))
 	sprink.daemon= True
 	serv.daemon = True
 	sprink.start()
