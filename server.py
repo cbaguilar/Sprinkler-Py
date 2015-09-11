@@ -238,8 +238,8 @@ def sprinkler_thread(num):
      gp.setmode(gp.BOARD)
      while 1:
      	lfile = open("program","r")
-     	Oprogram = json.loads(lfile.read())
-     	# Iprogram = Oprogram[num] #get the right number program, out of an array of 0 1 and 2
+     	Iprogram = json.loads(lfile.read())
+     	Oprogram = Iprogram[num] #get the right number program, out of an array of 0 1 and 2
         now = datetime.datetime.now()
         today = datetime.datetime.today()
         day = today.weekday()
