@@ -240,7 +240,7 @@ def sprinkler_thread():
        for x in range( 0, 2):	
      	lfile = open("program","r")
      	Iprogram = json.loads(lfile.read())
-     	Oprogram = Iprogram["programlist"][g] #get the right number program, out of an array of 0 1 and 2
+     	Oprogram = Iprogram[g] #get the right number program, out of an array of 0 1 and 2
         now = datetime.datetime.now()
         today = datetime.datetime.today()
         day = today.weekday()
@@ -255,7 +255,7 @@ def sprinkler_thread():
 	                lfile = open("program","r")
 	       		Iprogram = json.loads(lfile.read())
 	       		print g
-	       		Oprogram = Iprogram["programlist"][g]
+	       		Oprogram = Iprogram[g]
 	       		lfile.close()
 	       		cs = x+1
                 	wait = int(Oprogram["times"][x])
