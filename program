@@ -1,1 +1,1 @@
-{"start": "20", "days": [false, false, true, false, true, false, true], "times": ["0", "10", "10", "10", "5", "10", "20", "5", "5", "15", "6", "25"]}
+{"programlist":[{"times":["0","0","0","0","0","0","0","0","0","0","0","0"],"start":"","days":[false,false,false,false,false,false]},{"times":["0","0","0","0","0","0","0","0","0","0","0","0"],"start":"20","days":["false","false","false","false","false","false"]},{"times":["0","0","0","0","0","0","0","0","0","0","0","0"],"start":"20","days":["false","false","false","false","false","false"]}],"type":"program"}
