@@ -214,8 +214,8 @@ def server_thread():
 			Oprogram = json.loads(data)
 			if Oprogram["type"] == "program":
 				file = open("program","w")
-				file.write(json.dumps(Oprogram["program"]))
-				print(Oprogram["program"]["times"][1])
+				file.write(json.dumps(Oprogram["programlist"]))
+				print(Oprogram["programlist"][1]["times"][1])
 				file.close()
 				Oprogram = Oprogram["program"]
 			if Oprogram["type"] == "direct":
@@ -240,7 +240,7 @@ def sprinkler_thread():
        for x in range( 0, 2):	
      	lfile = open("program","r")
      	Iprogram = json.loads(lfile.read())
-     	Oprogram = Iprogram[g] #get the right number program, out of an array of 0 1 and 2
+     	Oprogram = Iprogram["programlist"][g] #get the right number program, out of an array of 0 1 and 2
         now = datetime.datetime.now()
         today = datetime.datetime.today()
         day = today.weekday()
