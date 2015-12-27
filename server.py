@@ -13,7 +13,7 @@ import os
 def broad(m):
 	os.system("sudo wall -n "+m)
 	
-print("Epic sprinkler program, made in 2015 by Christian A./Mr. Frog")
+print("Epic sprinkler program, made in 2015 by Christian A.K.A Mr. Frog")
 print("Currently in development, code for server and client are available on github.com")
 
 print("changed from github")
@@ -210,7 +210,7 @@ def server_thread():
        			conn.send(data+"\n")
 		 	
 		
-	         	print("wrote new file file")
+	         	print("wrote new program file")
 			Oprogram = json.loads(data)
 			if Oprogram["type"] == "program":
 				file = open("program","w")
@@ -240,22 +240,21 @@ def sprinkler_thread():
        for x in range( 0, 2):	
      	lfile = open("program","r")
      	Iprogram = json.loads(lfile.read())
-     	print("Checking program for day " + str(g))
+     	print("Checking program " + str(g))
      	Oprogram = Iprogram[g] #get the right number program, out of an array of 0 1 and 2
         now = datetime.datetime.now()
         today = datetime.datetime.today()
         day = today.weekday()
-        print(day)
+        print("Today is day " + str(day))
         lfile.close()
         if Oprogram["days"][int(day)]:
          if int(Oprogram["start"]) == now.hour:
                 #broad("started program")
-        	print("Started Program")
+        	print("Started Program" + str(g))
         	for x in range (0,12):
         		
 	                lfile = open("program","r")
 	       		Iprogram = json.loads(lfile.read())
-	       		print g
 	       		Oprogram = Iprogram[g]
 	       		lfile.close()
 	       		cs = x+1
