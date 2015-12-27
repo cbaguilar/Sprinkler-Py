@@ -233,13 +233,14 @@ def server_thread():
 
 
 #sprinkler thread that will check to start sprinkler program
-def sprinkler_thread(num):
+def sprinkler_thread():
      g = 0
      gp.setmode(gp.BOARD)
      while 1:
+       for x in range( 0, 2):	
      	lfile = open("program","r")
      	Iprogram = json.loads(lfile.read())
-     	Oprogram = Iprogram[num] #get the right number program, out of an array of 0 1 and 2
+     	Oprogram = Iprogram[g] #get the right number program, out of an array of 0 1 and 2
         now = datetime.datetime.now()
         today = datetime.datetime.today()
         day = today.weekday()
@@ -273,7 +274,7 @@ def sprinkler_thread(num):
                 	Oprogram = json.loads(lfile.read())
                 	lfile.close()
                 	now = datetime.datetime.now()
-                
+       x+=1
         else:
         	
         	print("Not time yet, time set to ",Oprogram["start"])
@@ -287,9 +288,8 @@ def sprinkler_thread(num):
 try:
 	
    	serv = threading.Thread(target=server_thread)
-	sprink = threading.Thread(target=sprinkler_thread, args = (0,))
-	sprink = threading.Thread(target=sprinkler_thread, args = (1,))
-	sprink = threading.Thread(target=sprinkler_thread, args = (2,))
+	sprink = threading.Thread(target=sprinkler_thread)
+	
 	sprink.daemon= True
 	serv.daemon = True
 	sprink.start()
