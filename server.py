@@ -240,6 +240,7 @@ def sprinkler_thread():
        for x in range( 0, 2):	
      	lfile = open("program","r")
      	Iprogram = json.loads(lfile.read())
+     	
      	Oprogram = Iprogram[g] #get the right number program, out of an array of 0 1 and 2
         now = datetime.datetime.now()
         today = datetime.datetime.today()
@@ -281,7 +282,7 @@ def sprinkler_thread():
         	print("Not time yet, time set to ",Oprogram["start"])
         time.sleep(10)
         g = g+1
-        if g > 3:
+        if g == 3:
         	os.system("ping 192.168.2.1 -c 1")
         	os.system("ping 192.168.2.10 -c 1")
         	g=0
