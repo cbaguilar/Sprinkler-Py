@@ -254,7 +254,7 @@ def sprinkler_thread():
         		
 	                lfile = open("program","r")
 	       		Iprogram = json.loads(lfile.read())
-	       		Oprogram = Iprogram["programlist"][g]
+	       		Oprogram = Iprogram[g]
 	       		lfile.close()
 	       		cs = x+1
                 	wait = int(Oprogram["times"][x])
