@@ -274,7 +274,6 @@ def sprinkler_thread():
                 	Oprogram = json.loads(lfile.read())
                 	lfile.close()
                 	now = datetime.datetime.now()
-       x+=1
         else:
         	
         	print("Not time yet, time set to ",Oprogram["start"])
@@ -282,7 +281,9 @@ def sprinkler_thread():
         g = g+1
         if g > 3:
         	os.system("ping 192.168.2.1 -c 1")
+        	os.system("ping 192.168.2.10 -c 1")
         	g=0
+       x+=1
 
 
 try:
