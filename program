@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 {"programlist":[{"times":["0","0","0","0","0","0","0","0","0","0","0","0"],"start":"20","days":[false,false,false,false,false,false]},{"times":["0","0","0","0","0","0","0","0","0","0","0","0"],"start":"20","days":[false,false,false,false,false,false]}],"type":"program"}
 
+=======
+{"programlist":[{"times":["0","0","0","0","0","0","0","0","0","0","0","0"],"start":"","days":[false,false,false,false,false,false]},{"times":["0","0","0","0","0","0","0","0","0","0","0","0"],"start":"20","days":["false","false","false","false","false","false"]},{"times":["0","0","0","0","0","0","0","0","0","0","0","0"],"start":"20","days":["false","false","false","false","false","false"]}],"type":"program"}
+>>>>>>> 4a4ec883f2e062b252f0174820efe28394186b77
