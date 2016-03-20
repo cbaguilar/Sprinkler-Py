@@ -6,7 +6,7 @@ import sys
 import threading
 import json
 import datetime
-import RPi.GPIO as gp
+#import RPi.GPIO as gp
 import os
 
 #function for sending a system wide message (like shutting off from button)
@@ -59,7 +59,11 @@ def str2bool(v):
 #With current levels and voltage being as is, current setup of GPIO turns on relay.
 #This little quirk is exploited (since i dont wanna mess with transistor now)
 #and simply used. Only downside is that sprinklers cannot be turned off individually (not a serious issue).
+
 def newsprink(sprinkler):
+    print("chss")
+
+'''
     gp.setmode(gp.BOARD)
     if sprinkler == 1:
         gp.setup(3,gp.OUT)
@@ -85,8 +89,10 @@ def newsprink(sprinkler):
         gp.setup(24,gp.OUT)
     elif sprinkler == 12:
         gp.setup(26,gp.OUT)
+'''
 def sprinkler(sprinkler, on):
-    
+	print("chss")
+''' 
     #numbering sprinklers by column
     if sprinkler == 1:
         gp.output(3,on)
@@ -112,8 +118,8 @@ def sprinkler(sprinkler, on):
         gp.output(10,on)
     elif sprinkler == 12:
         gp.output(12,on)
-
-    print("Set sprinkler "+sprinkler+" to "+on)
+'''
+	#print("Set sprinkler "+sprinkler+" to "+on)
     #conn.send("Set sprinkler "+sprinkler+" to "+on"\n)	
 
 #did i duplicate this?
@@ -152,6 +158,7 @@ def sprinkler(sprinkler, on):
     
 def initialize():
     print "Initializing"
+'''
     gp.setmode(gp.BOARD)
     print ("Set up board")
     gp.setup(3,gp.OUT)
@@ -167,7 +174,8 @@ def initialize():
     gp.setup(10,gp.OUT)
     gp.setup(12,gp.OUT)
     print "Set up pins"
-    
+'''
+
 
     #main server thread that listens for program updates and direct command
 def server_thread():
@@ -223,7 +231,8 @@ def server_thread():
 				if Oprogram["direct"]["enabled"]:
 					newsprink(int(o+1))
 				else:
-					gp.cleanup()
+					print("cleanup cleanup")
+					#gp.cleanup()
 				
 		 except Exception, e1:
 			print str(e1)
@@ -265,7 +274,7 @@ def sprinkler_thread():
                         	newsprink(cs)
                 	
                         time.sleep(float(wait*60))
-                        gp.cleanup()
+                        #gp.cleanup()
                 #broad("finished program")
                 now = datetime.datetime.now()
                 oldnow = now.hour
@@ -308,7 +317,7 @@ while 1:
    
 	ipt = raw_input("--> ")
 	if ipt == "stop":
-		gp.cleanup()
+		#gp.cleanup()
 		try:
 			conn.close()
 		except:
