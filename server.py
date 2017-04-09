@@ -55,10 +55,31 @@ random historical stuff
 def str2bool(v):
   return v.lower() in ("true")
 
+
+
+'''
+Defining GPIO numbers to sprinkler numbers
+
+Station	GPIO	Color
+1	3	blue
+2	5	purple
+3	7	grey
+4	11	white
+5	13	black
+6	15	gold
+7	19	red
+8	21	orange
+9	23	yellow
+10	22	green
+11	24	blue
+12	26	purple
+'''
+
 #OFFICIAL sprinkler function being used, uses a little electrical imbalance bug thingy.
 #With current levels and voltage being as is, current setup of GPIO turns on relay.
 #This little quirk is exploited (since i dont wanna mess with transistor now)
 #and simply used. Only downside is that sprinklers cannot be turned off individually (not a serious issue).
+
 def newsprink(sprinkler):
     gp.setmode(gp.BOARD)
     if sprinkler == 1:
