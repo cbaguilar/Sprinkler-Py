@@ -6,7 +6,9 @@ import sys
 import threading
 import json
 import datetime
-import RPi.GPIO as gp
+
+import Fake.GPIO as gp
+
 import os
 
 #function for sending a system wide message (like shutting off from button)
@@ -80,115 +82,120 @@ Station	GPIO	Color
 #This little quirk is exploited (since i dont wanna mess with transistor now)
 #and simply used. Only downside is that sprinklers cannot be turned off individually (not a serious issue).
 
-def newsprink(sprinkler):
-    gp.setmode(gp.BOARD)
-    if sprinkler == 1:
-        gp.setup(3,gp.OUT)
-    elif sprinkler == 2:
-        gp.setup(5,gp.OUT)
-    elif sprinkler == 3:
-        gp.setup(7,gp.OUT)
-    elif sprinkler == 4:
-        gp.setup(11,gp.OUT)
-    elif sprinkler == 5:
-        gp.setup(13,gp.OUT)
-    elif sprinkler == 6:
-        gp.setup(15,gp.OUT)
-    elif sprinkler == 7:
-        gp.setup(19,gp.OUT)
-    elif sprinkler == 8:
-        gp.setup(21,gp.OUT)
-    elif sprinkler == 9:
-        gp.setup(23,gp.OUT)
-    elif sprinkler == 10:
-        gp.setup(22,gp.OUT)
-    elif sprinkler == 11:
-        gp.setup(24,gp.OUT)
-    elif sprinkler == 12:
-        gp.setup(26,gp.OUT)
-def sprinkler(sprinkler, on):
-    
-    #numbering sprinklers by column
-    if sprinkler == 1:
-        gp.output(3,on)
-    elif sprinkler == 2:
-        gp.output(5,on)
-    elif sprinkler == 3:
-        gp.output(7,on)
-    elif sprinkler == 4:
-        gp.output(11,on)
-    elif sprinkler == 5:
-        gp.output(13,on)
-    elif sprinkler == 6:
-        gp.output(15,on)
-    elif sprinkler == 7:
-        gp.output(19,on)
-    elif sprinkler == 8:
-        gp.output(21,on)
-    elif sprinkler == 9:
-        gp.output(23,on)
-    elif sprinkler == 10:
-        gp.output(8,on)
-    elif sprinkler == 11:
-        gp.output(10,on)
-    elif sprinkler == 12:
-        gp.output(12,on)
+try:
+	import RPi.GPIO as gp
+	def newsprink(sprinkler):
+	    gp.setmode(gp.BOARD)
+	    if sprinkler == 1:
+		gp.setup(3,gp.OUT)
+	    elif sprinkler == 2:
+		gp.setup(5,gp.OUT)
+	    elif sprinkler == 3:
+		gp.setup(7,gp.OUT)
+	    elif sprinkler == 4:
+		gp.setup(11,gp.OUT)
+	    elif sprinkler == 5:
+		gp.setup(13,gp.OUT)
+	    elif sprinkler == 6:
+		gp.setup(15,gp.OUT)
+	    elif sprinkler == 7:
+		gp.setup(19,gp.OUT)
+	    elif sprinkler == 8:
+		gp.setup(21,gp.OUT)
+	    elif sprinkler == 9:
+		gp.setup(23,gp.OUT)
+	    elif sprinkler == 10:
+		gp.setup(22,gp.OUT)
+	    elif sprinkler == 11:
+		gp.setup(24,gp.OUT)
+	    elif sprinkler == 12:
+		gp.setup(26,gp.OUT)
+	def sprinkler(sprinkler, on):
+	    
+	    #numbering sprinklers by column
+	    if sprinkler == 1:
+		gp.output(3,on)
+	    elif sprinkler == 2:
+		gp.output(5,on)
+	    elif sprinkler == 3:
+		gp.output(7,on)
+	    elif sprinkler == 4:
+		gp.output(11,on)
+	    elif sprinkler == 5:
+		gp.output(13,on)
+	    elif sprinkler == 6:
+		gp.output(15,on)
+	    elif sprinkler == 7:
+		gp.output(19,on)
+	    elif sprinkler == 8:
+		gp.output(21,on)
+	    elif sprinkler == 9:
+		gp.output(23,on)
+	    elif sprinkler == 10:
+		gp.output(8,on)
+	    elif sprinkler == 11:
+		gp.output(10,on)
+	    elif sprinkler == 12:
+		gp.output(12,on)
 
-    print("Set sprinkler "+sprinkler+" to "+on)
-    #conn.send("Set sprinkler "+sprinkler+" to "+on"\n)	
+	    print("Set sprinkler "+sprinkler+" to "+on)
+	    #conn.send("Set sprinkler "+sprinkler+" to "+on"\n)	
 
-#did i duplicate this?
-def sprinkler(sprinkler, on):
-    
-    #numbering sprinklers by column
-    if sprinkler == 1:
-        gp.output(3,on)
-    elif sprinkler == 2:
-        gp.output(5,on)
-    elif sprinkler == 3:
-        gp.output(7,on)
-    elif sprinkler == 4:
-        gp.output(11,on)
-    elif sprinkler == 5:
-        gp.output(13,on)
-    elif sprinkler == 6:
-        gp.output(15,on)
-    elif sprinkler == 7:
-        gp.output(19,on)
-    elif sprinkler == 8:
-        gp.output(21,on)
-    elif sprinkler == 9:
-        gp.output(23,on)
-    elif sprinkler == 10:
-        gp.output(8,on)
-    elif sprinkler == 11:
-        gp.output(10,on)
-    elif sprinkler == 12:
-        gp.output(12,on)
+	#did i duplicate this?
+	def sprinkler(sprinkler, on):
+	    
+	    #numbering sprinklers by column
+	    if sprinkler == 1:
+		gp.output(3,on)
+	    elif sprinkler == 2:
+		gp.output(5,on)
+	    elif sprinkler == 3:
+		gp.output(7,on)
+	    elif sprinkler == 4:
+		gp.output(11,on)
+	    elif sprinkler == 5:
+		gp.output(13,on)
+	    elif sprinkler == 6:
+		gp.output(15,on)
+	    elif sprinkler == 7:
+		gp.output(19,on)
+	    elif sprinkler == 8:
+		gp.output(21,on)
+	    elif sprinkler == 9:
+		gp.output(23,on)
+	    elif sprinkler == 10:
+		gp.output(8,on)
+	    elif sprinkler == 11:
+		gp.output(10,on)
+	    elif sprinkler == 12:
+		gp.output(12,on)
 
-    print("Set sprinkler "+sprinkler+" to "+on)
-    #conn.send("Set sprinkler "+sprinkler+" to "+on"\n)
+	    print("Set sprinkler "+sprinkler+" to "+on)
+	    #conn.send("Set sprinkler "+sprinkler+" to "+on"\n)
+	    
+	    # initialize program, set up board and electrical stuff
+	    
+	def initialize():
+	    print "Initializing"
+	    gp.setmode(gp.BOARD)
+	    print ("Set up board")
+	    gp.setup(3,gp.OUT)
+	    gp.setup(5,gp.OUT)
+	    gp.setup(7,gp.OUT)
+	    gp.setup(11,gp.OUT)
+	    gp.setup(13,gp.OUT)
+	    gp.setup(15,gp.OUT)
+	    gp.setup(19,gp.OUT)
+	    gp.setup(21,gp.OUT)
+	    gp.setup(23,gp.OUT)
+	    gp.setup(8,gp.OUT)
+	    gp.setup(10,gp.OUT)
+	    gp.setup(12,gp.OUT)
+	    print "Set up pins"
     
-    # initialize program, set up board and electrical stuff
-    
-def initialize():
-    print "Initializing"
-    gp.setmode(gp.BOARD)
-    print ("Set up board")
-    gp.setup(3,gp.OUT)
-    gp.setup(5,gp.OUT)
-    gp.setup(7,gp.OUT)
-    gp.setup(11,gp.OUT)
-    gp.setup(13,gp.OUT)
-    gp.setup(15,gp.OUT)
-    gp.setup(19,gp.OUT)
-    gp.setup(21,gp.OUT)
-    gp.setup(23,gp.OUT)
-    gp.setup(8,gp.OUT)
-    gp.setup(10,gp.OUT)
-    gp.setup(12,gp.OUT)
-    print "Set up pins"
-    
+except Exception, e5:
+	print "Could not load GPIO library"
+	print "Using dummy library\n"
 
     #main server thread that listens for program updates and direct command
 def server_thread():
