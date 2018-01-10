@@ -18,21 +18,16 @@ def broad(m):
 print("Epic sprinkler program, made in 2015 by Christian A.K.A Mr. Frog")
 print("Currently in development, code for server and client are available on github.com")
 
-print("changed from github")
 
 now = datetime.datetime.now()
 today = datetime.datetime.today()
-HOST = None               # Symbolic name meaning all available interfaces (this comment was in a socket example and i feel it is very importatn)
-PORT = 42001#input("Enter Port")              # Arbitrary non-privileged port (")
+HOST = None               
+PORT = 42001
 s = None
 
 
-file = open("program","r")
-program = file.read()
-print(program)
-file.close()
 
-Oprogram = json.loads(program)
+ProgramObj = json.load(open("program")) #JSON program object
 
 
 '''
@@ -239,16 +234,16 @@ def server_thread():
 		 	
 		
 	         	print("wrote new program file")
-			Oprogram = json.loads(data)
-			if Oprogram["type"] == "program":
+			ProgramObj = json.loads(data)
+			if ProgramObj["type"] == "program":
 				file = open("program","w")
-				file.write(json.dumps(Oprogram["programlist"]))
-				print(Oprogram["programlist"][1]["times"][1])
+				file.write(json.dumps(ProgramObj["programlist"]))
+				print(ProgramObj["programlist"][1]["times"][1])
 				file.close()
-				Oprogram = Oprogram["program"]
-			if Oprogram["type"] == "direct":
-				o = Oprogram["direct"]["sprinkler"]
-				if Oprogram["direct"]["enabled"]:
+				ProgramObj = ProgramObj["program"]
+			if ProgramObj["type"] == "direct":
+				o = ProgramObj["direct"]["sprinkler"]
+				if ProgramObj["direct"]["enabled"]:
 					newsprink(int(o+1))
 				else:
 					gp.cleanup()
@@ -267,26 +262,25 @@ def sprinkler_thread():
      while 1:
        for x in range( 0, 2):	
      	lfile = open("program","r")
-     	Iprogram = json.loads(lfile.read())
+     	ProgramObj = json.load(open("program"))
      	print("Checking program " + str(g))
-     	Oprogram = Iprogram[g] #get the right number program, out of an array of 0 1 and 2
+     	curProgram = ProgramObj[g] #get the right number program, out of an array of 0 1 and 2
         now = datetime.datetime.now()
         today = datetime.datetime.today()
         day = today.weekday()
         print("Today is day " + str(day))
         lfile.close()
-        if Oprogram["days"][int(day)]:
-         if int(Oprogram["start"]) == now.hour:
+        if ProgramObj["days"][int(day)]:
+         if int(ProgramObj["start"]) == now.hour:
                 #broad("started program")
         	print("Started Program" + str(g))
         	for x in range (0,12):
         		
-	                lfile = open("program","r")
-	       		Iprogram = json.loads(lfile.read())
-	       		Oprogram = Iprogram[g]
-	       		lfile.close()
+	                
+	       		programObj = json.load(open("program"))
+	       		curProgram = programObj[g]
 	       		cs = x+1
-                	wait = int(Oprogram["times"][x])
+                	wait = int(curProgram["times"][x])
                 	print(wait)
                         print("Started Sprinkler "+str(cs)+" for "+str(wait))
                         if wait !=  0:
@@ -297,16 +291,14 @@ def sprinkler_thread():
                 #broad("finished program")
                 now = datetime.datetime.now()
                 oldnow = now.hour
-        	while now.hour == int(Oprogram["start"]):
+        	while now.hour == int(ProgramObj["start"]):
                 	print("Finished program, waiting for hour to end")
                 	time.sleep(10)
-                	lfile = open("program","r")
-                	Oprogram = json.loads(lfile.read())
-                	lfile.close()
+                	ProgramObj = json.loads(open("program"))
                 	now = datetime.datetime.now()
         else:
         	
-        	print("Not time yet, time set to ",Oprogram["start"])
+        	print("Not time yet, time set to ",ProgramObj["start"])
         time.sleep(10)
         g = g+1
         if g == 3:
@@ -326,7 +318,7 @@ try:
 	sprink.start()
 	serv.start()
 	#sleep(1)
-   	# if Oprogram["start"] ==now.Hour:
+   	# if ProgramObj["start"] ==now.Hour:
 
 except Exception, e:
     print "Error: Could not start thread"
@@ -340,7 +332,7 @@ while 1:
 		try:
 			conn.close()
 		except:
-			print("teehee")
+			print("teehee\n couldn't close a socket...")
 		sys.exit()
     	pass
 
