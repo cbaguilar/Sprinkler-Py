@@ -270,8 +270,8 @@ def sprinkler_thread():
         day = today.weekday()
         print("Today is day " + str(day))
         lfile.close()
-        if ProgramObj["days"][int(day)]:
-         if int(ProgramObj["start"]) == now.hour:
+        if curProgram["days"][int(day)]:
+         if int(curProgram["start"]) == now.hour:
                 #broad("started program")
         	print("Started Program" + str(g))
         	for x in range (0,12):
@@ -298,7 +298,7 @@ def sprinkler_thread():
                 	now = datetime.datetime.now()
         else:
         	
-        	print("Not time yet, time set to ",ProgramObj["start"])
+        	print("Not time yet, time set to "+curProgram["start"])
         time.sleep(10)
         g = g+1
         if g == 3:
