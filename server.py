@@ -6,8 +6,10 @@ import sys
 import threading
 import json
 import datetime
-
 import Fake.GPIO as gp
+
+import SocketServer
+import ssl
 
 import os
 
@@ -234,16 +236,16 @@ def server_thread():
 		 	
 		
 	         	print("wrote new program file")
-			ProgramObj = json.loads(data)
-			if ProgramObj["type"] == "program":
+			netMessage = json.loads(data)
+			if netMessage["type"] == "program":
 				file = open("program","w")
-				file.write(json.dumps(ProgramObj["programlist"]))
-				print(ProgramObj["programlist"][1]["times"][1])
+				file.write(json.dumps(netMessage["programlist"])) #save only the program list on file.
+				print(netMessage["programlist"][1]["times"][1])
 				file.close()
-				ProgramObj = ProgramObj["program"]
-			if ProgramObj["type"] == "direct":
-				o = ProgramObj["direct"]["sprinkler"]
-				if ProgramObj["direct"]["enabled"]:
+				netMessage = netMessage["program"] #check this, looks erroneous
+			if netMessage["type"] == "direct":
+				o = netMessage["direct"]["sprinkler"]
+				if netMessage["direct"]["enabled"]:
 					newsprink(int(o+1))
 				else:
 					gp.cleanup()
