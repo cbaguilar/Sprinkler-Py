@@ -51,7 +51,7 @@ random historical stuff
 
 
 #string to boolean for converting diffirent types of True and true
-def str2bool(v):
+def str2bool(v): 
   return v.lower() in ("true")
 
 
@@ -232,7 +232,7 @@ def server_thread():
 	         	break
        		 print(data)
 		 try:
-       			conn.send(data+"\n")
+       			conn.send(.000+ "\n")
 		 	
 		
 	         	print("wrote new program file")
