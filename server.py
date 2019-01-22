@@ -232,7 +232,7 @@ def server_thread():
 	         	break
        		 print(data)
 		 try:
-       			conn.send(.000+ "\n")
+       			conn.send(data+ "\n")
 		 	
 		
 	         	print("wrote new program file")
